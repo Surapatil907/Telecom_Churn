@@ -1,11 +1,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import pickle
+import joblib
 
-# Load the model
-with open("best_log_reg_model.pkl", "rb") as file:
-    model = pickle.load(file)
+model = joblib.load("best_log_reg_model.pkl")
 
 st.title("Telecom Customer Churn Prediction")
 st.write("Enter customer information to predict whether they will churn.")
