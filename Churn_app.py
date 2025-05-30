@@ -233,54 +233,54 @@ with col_pred2:
             st.error("This might be due to feature preprocessing mismatch. Please check the error details below:")
             st.code(str(e))
 
-# Information and troubleshooting
-with st.expander("ℹ️ About This Model"):
-    st.markdown("""
-    **Model Information:**
-    - **Algorithm**: Logistic Regression
-    - **Purpose**: Predict telecom customer churn
-    - **Features**: 19 customer attributes (demographics, services, billing)
+# # Information and troubleshooting
+# with st.expander("ℹ️ About This Model"):
+#     st.markdown("""
+#     **Model Information:**
+#     - **Algorithm**: Logistic Regression
+#     - **Purpose**: Predict telecom customer churn
+#     - **Features**: 19 customer attributes (demographics, services, billing)
     
-    **Key Predictive Factors:**
-    - Contract type (month-to-month customers have higher churn risk)
-    - Monthly charges (higher charges increase churn probability)
-    - Payment method (electronic check users have higher churn)
-    - Tenure (newer customers are more likely to churn)
-    - Internet service type (fiber optic customers may have higher churn)
+#     **Key Predictive Factors:**
+#     - Contract type (month-to-month customers have higher churn risk)
+#     - Monthly charges (higher charges increase churn probability)
+#     - Payment method (electronic check users have higher churn)
+#     - Tenure (newer customers are more likely to churn)
+#     - Internet service type (fiber optic customers may have higher churn)
     
-    **How to Use:**
-    1. Fill in all customer information fields
-    2. Click "Predict Churn" to get the prediction
-    3. Review recommendations for high-risk customers
-    """)
+#     **How to Use:**
+#     1. Fill in all customer information fields
+#     2. Click "Predict Churn" to get the prediction
+#     3. Review recommendations for high-risk customers
+#     """)
 
-with st.expander("🔧 Troubleshooting"):
-    st.markdown("""
-    **Common Issues:**
+# with st.expander("🔧 Troubleshooting"):
+#     st.markdown("""
+#     **Common Issues:**
     
-    **Feature Mismatch Error:**
-    - Ensure your model was trained on the same 19 features listed above
-    - Check that categorical encoding matches training data preprocessing
+#     **Feature Mismatch Error:**
+#     - Ensure your model was trained on the same 19 features listed above
+#     - Check that categorical encoding matches training data preprocessing
     
-    **Model Loading Error:**
-    - Verify 'best_log_reg_model.pkl' file is in the same directory
-    - Ensure the model was saved using joblib (not pickle)
+#     **Model Loading Error:**
+#     - Verify 'best_log_reg_model.pkl' file is in the same directory
+#     - Ensure the model was saved using joblib (not pickle)
     
-    **Prediction Accuracy:**
-    - Model performance depends on training data quality
-    - Consider retraining if business context has changed significantly
-    """)
+#     **Prediction Accuracy:**
+#     - Model performance depends on training data quality
+#     - Consider retraining if business context has changed significantly
+#     """)
 
-# Debug section (can be removed in production)
-if st.checkbox("🔧 Show Debug Information"):
-    st.subheader("Debug Information")
-    try:
-        debug_df = create_input_dataframe()
-        st.write(f"**Input DataFrame Shape:** {debug_df.shape}")
-        st.write(f"**Model Expected Features:** {model.n_features_in_}")
-        st.write("**Input DataFrame Columns:**")
-        st.write(list(debug_df.columns))
-        st.write("**Sample of Input Data:**")
-        st.dataframe(debug_df)
-    except Exception as e:
-        st.error(f"Debug error: {str(e)}")
+# # Debug section (can be removed in production)
+# if st.checkbox("🔧 Show Debug Information"):
+#     st.subheader("Debug Information")
+#     try:
+#         debug_df = create_input_dataframe()
+#         st.write(f"**Input DataFrame Shape:** {debug_df.shape}")
+#         st.write(f"**Model Expected Features:** {model.n_features_in_}")
+#         st.write("**Input DataFrame Columns:**")
+#         st.write(list(debug_df.columns))
+#         st.write("**Sample of Input Data:**")
+#         st.dataframe(debug_df)
+#     except Exception as e:
+#         st.error(f"Debug error: {str(e)}")
