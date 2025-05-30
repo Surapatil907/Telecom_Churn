@@ -71,7 +71,15 @@ with col7:
     monthly_charges = st.number_input("Monthly Charges ($)", 0.0, 200.0, 70.0)
 
 with col8:
-    total_charges = st.number_input("Total Charges ($)", 0.0, 10000.0, 1000.0)
+    # Auto-calculate suggested total charges
+    suggested_total = monthly_charges * tenure if tenure > 0 else monthly_charges
+    total_charges = st.number_input("Total Charges ($)", 0.0, 15000.0, float(suggested_total))
+    
+    # Show helpful suggestion
+    if tenure > 0:
+        st.caption(f"💡 Auto-calculated: ${suggested_total:.0f} (${monthly_charges:.0f} × {tenure} months)")
+    else:
+        st.caption("💡 Enter the total amount paid over entire relationship")
 
 # Create the input data exactly as the model expects
 def create_input_dataframe():
